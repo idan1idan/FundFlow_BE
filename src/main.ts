@@ -4,11 +4,17 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.setGlobalPrefix('api');
+
   const config = new DocumentBuilder()
-    .setTitle('Fund Flow')
-    .setDescription('The Fund Flow API description')
+    .setTitle('FundFlow API')
+    .setDescription('FundFlow API description')
     .setVersion('1.0')
+    .addTag('Fund')
+    .addTag('Income')
+    .addTag('Auth')
     .build();
+
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
   await app.listen(3000);
