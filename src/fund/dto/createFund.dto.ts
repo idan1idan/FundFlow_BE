@@ -10,4 +10,6 @@ export class CreateFundDto {
   description: string;
   @ApiProperty({ enum: TRANSACTION_TYPE })
   transactionType: TRANSACTION_TYPE;
+  @ApiProperty()
+  transactionDate: Date;
 }

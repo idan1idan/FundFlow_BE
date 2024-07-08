@@ -27,6 +27,8 @@ export class Income {
   incomeType: INCOME_TYPE;
   @Prop({ required: true })
   source: string;
+  @Prop({ required: true })
+  transactionDate: Date;
 }
 
 export const IncomeSchema = SchemaFactory.createForClass(Income);
