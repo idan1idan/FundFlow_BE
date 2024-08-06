@@ -8,11 +8,14 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
   imports: [
     FundModule,
     MongooseModule.forRootAsync({
-      useFactory: async (configService: ConfigService) => ({
-        uri: configService.get<string>('MONGODB_URI'),
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }),
+      useFactory: async (configService: ConfigService) => {
+        console.log(configService.get<string>('MONGO_URI'));
+        return {
+          uri: configService.get<string>('MONGO_URI'),
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
+        };
+      },
       inject: [ConfigService],
     }),
     IncomeModule,
