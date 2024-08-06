@@ -26,6 +26,8 @@ export class Fund {
   description: string;
   @Prop({ required: true })
   transactionType: TRANSACTION_TYPE;
+  @Prop({ required: true })
+  transactionDate: Date;
 }
 
 export const FundSchema = SchemaFactory.createForClass(Fund);
