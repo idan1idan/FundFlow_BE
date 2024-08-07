@@ -12,8 +12,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         console.log(configService.get<string>('MONGO_URI'));
         return {
           uri: configService.get<string>('MONGO_URI'),
-          useNewUrlParser: true,
-          useUnifiedTopology: true,
         };
       },
       inject: [ConfigService],

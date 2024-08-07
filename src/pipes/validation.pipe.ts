@@ -16,13 +16,14 @@ export class ValidationPipe implements PipeTransform<any> {
     const object = plainToInstance(metatype, value);
     const errors = await validate(object);
     if (errors.length > 0) {
+      console.log(errors);
       throw new BadRequestException('Validation failed');
     }
     return value;
   }
 
   private toValidate(metatype: Function): boolean {
-    const types: Function[] = [String, Boolean, Number, Array, Object];
+    const types: Function[] = [String, Boolean, Number, Array, Object, Date];
     return !types.includes(metatype);
   }
 }

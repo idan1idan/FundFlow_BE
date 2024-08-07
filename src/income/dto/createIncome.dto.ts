@@ -1,6 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { INCOME_TYPE } from '../income.schema';
-import { IsDate, IsEnum, IsNumberString, IsString } from 'class-validator';
+import {
+  IsDate,
+  IsEnum,
+  IsNumberString,
+  IsOptional,
+  IsString,
+} from 'class-validator';
+import { Type } from 'class-transformer';
 
 export class CreateIncomeDto {
   @IsNumberString()
@@ -9,8 +16,12 @@ export class CreateIncomeDto {
   @IsNumberString()
   @ApiProperty()
   fundAmount: string;
-  @ApiProperty()
+  @ApiProperty({
+    required: false,
+    description: 'Description of the income',
+  })
   @IsString()
+  @IsOptional()
   description: string;
   @ApiProperty({ required: true })
   @IsEnum(INCOME_TYPE)
@@ -19,6 +30,7 @@ export class CreateIncomeDto {
   @IsString()
   source: string;
   @ApiProperty({ required: true })
+  @Type(() => Date)
   @IsDate()
   transactionDate: Date;
 }

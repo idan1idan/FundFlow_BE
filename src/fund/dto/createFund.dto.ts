@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { TRANSACTION_TYPE } from '../fund.schema';
 import { IsDate, IsEnum, IsNumberString, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
 
 export class CreateFundDto {
   @IsString()
@@ -17,5 +18,6 @@ export class CreateFundDto {
   transactionType: TRANSACTION_TYPE;
   @ApiProperty()
   @IsDate()
+  @Type(() => Date)
   transactionDate: Date;
 }
