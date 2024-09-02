@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { IncomeService } from './income.service';
 import { CreateIncomeDto } from './dto/createIncome.dto';
@@ -13,7 +21,7 @@ export class IncomeController {
   }
 
   @Get(':id')
-  readOne(id: string) {
+  readOne(@Query('id') id: string) {
     return this.incomeService.getIncome(id);
   }
 
@@ -23,11 +31,11 @@ export class IncomeController {
   }
 
   @Delete(':id')
-  delete(id: string) {
+  delete(@Query('id') id: string) {
     return this.incomeService.deleteIncome(id);
   }
   @Put(':id')
-  update(@Body() updateIncomeDto: CreateIncomeDto, id: string) {
+  update(@Body() updateIncomeDto: CreateIncomeDto, @Query('id') id: string) {
     return this.incomeService.updateIncome(id, updateIncomeDto);
   }
 }

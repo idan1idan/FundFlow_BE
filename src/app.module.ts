@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { IncomeModule } from './income/income.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TimelineModule } from './timeline/timeline.module';
 @Module({
   imports: [
     FundModule,
@@ -22,6 +23,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       envFilePath: '.env',
       isGlobal: true,
     }),
+    TimelineModule,
   ],
   controllers: [],
   providers: [],

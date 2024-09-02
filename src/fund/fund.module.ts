@@ -10,5 +10,6 @@ import { Fund, FundSchema } from './fund.schema';
     MongooseModule.forFeature([{ name: Fund.name, schema: FundSchema }]),
   ],
   providers: [FundService],
+  exports: [FundService],
 })
 export class FundModule {}

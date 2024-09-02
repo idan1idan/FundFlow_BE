@@ -10,5 +10,6 @@ import { MongooseModule } from '@nestjs/mongoose';
     MongooseModule.forFeature([{ name: Income.name, schema: IncomeSchema }]),
   ],
   providers: [IncomeService],
+  exports: [IncomeService],
 })
 export class IncomeModule {}

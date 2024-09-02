@@ -15,6 +15,7 @@ async function bootstrap() {
     .addTag('Fund')
     .addTag('Income')
     .addTag('Auth')
+    .addTag('Timeline')
     .build();
   app.use(cookieParser());
   app.useGlobalPipes(new ValidationPipe());
